@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Love You, Wifey</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: linear-gradient(135deg, #1a0a0e, #2d0f1a, #0f0a1a);
+      overflow-x: hidden;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .card {
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+  </style>
+</head>
+
+<body class="text-center text-[#f5e6d3]">
+
+  <!-- Floating emojis -->
+  <div class="fixed inset-0 pointer-events-none">
+    <div class="float absolute top-10 left-5 text-3xl">💕</div>
+    <div class="float absolute top-20 right-10 text-2xl">✨</div>
+    <div class="float absolute bottom-10 left-10 text-3xl">🌹</div>
+  </div>
+
+  <div class="max-w-3xl mx-auto px-6 py-16">
+
+    <!-- Header -->
+    <h1 class="text-5xl md:text-7xl font-bold mb-4" style="font-family: 'Playfair Display', serif;">
+      I Love You, Wifey ❤️
+    </h1>
+
+    <p class="text-xl italic text-[#d4a574] mb-10">
+      You are my everything
+    </p>
+
+    <!-- Quotes -->
+    <div class="space-y-8">
+
+      <div class="card p-8 rounded-xl bg-white/5 border border-white/10">
+        <p class="text-lg md:text-xl">
+          “In all the world, there is no heart for me like yours.”
+        </p>
+        <span class="text-sm italic text-[#d4a574]">— Maya Angelou</span>
+      </div>
+
+      <div class="card p-8 rounded-xl bg-white/5 border border-white/10">
+        <p class="text-lg md:text-xl">
+          “I saw that you were perfect, and so I loved you more.”
+        </p>
+        <span class="text-sm italic text-[#d4a574]">— Angelita Lim</span>
+      </div>
+
+      <div class="card p-8 rounded-xl bg-white/5 border border-white/10">
+        <p class="text-lg md:text-xl">
+          “You are my mirror, my soulmate, my everything.”
+        </p>
+        <span class="text-sm italic text-[#d4a574]">— Unknown</span>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-16">
+      <p class="text-2xl md:text-3xl font-bold italic mb-4" style="font-family: 'Playfair Display', serif;">
+        Forever & Always 💍
+      </p>
+
+      <!-- WhatsApp Button (optional) -->
+      <a href="https://wa.me/YOURNUMBER" target="_blank"
+         class="inline-block mt-4 px-6 py-3 bg-green-600 hover:bg-green-700 rounded-full text-white font-semibold">
+         Chat on WhatsApp 💬
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>
