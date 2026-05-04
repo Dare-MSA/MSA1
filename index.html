@@ -14,26 +14,112 @@
   <style>
     body {
       font-family: 'Cormorant Garamond', serif;
-      background: linear-gradient(135deg, #1a0a0e, #2d0f1a, #0f0a1a);
+      background: radial-gradient(circle at top, #3a0a3a, #120012, #000);
       overflow-x: hidden;
+      position: relative;
+      cursor: none; /* hide default cursor */
     }
 
+    /* Neon glow */
+    .neon {
+      text-shadow: 0 0 10px #ff4da6, 0 0 20px #ff4da6, 0 0 40px #ff4da6;
+    }
+
+    /* Floating animation */
     @keyframes float {
       0%,100% { transform: translateY(0); }
       50% { transform: translateY(-20px); }
     }
+    .float { animation: float 3s ease-in-out infinite; }
 
-    .float {
-      animation: float 3s ease-in-out infinite;
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
     }
 
+    /* Heart pulse */
+    .heart-pulse {
+      animation: pulse 1.4s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+      100% { transform: scale(1); }
+    }
+
+    /* Card hover */
     .card {
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       transition: 0.3s;
     }
-
     .card:hover {
-      transform: translateY(-5px) scale(1.02);
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 0 20px #ff4da633;
+    }
+
+    /* Floating hearts animation */
+    @keyframes floatHearts {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.6); opacity: 0; }
+    }
+    .floating-heart {
+      position: fixed;
+      bottom: -50px;
+      font-size: 24px;
+      animation: floatHearts 6s linear infinite;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Futuristic particles */
+    .particle {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: #ff4da6;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: particleFloat 8s infinite linear;
+    }
+    @keyframes particleFloat {
+      from { transform: translateY(0); }
+      to { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    /* Tap‑spawn glowing particles */
+    .tap-particle {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #ff4da6, #ff0066, transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: tapParticleAnim 0.8s ease-out forwards;
+      box-shadow: 0 0 10px #ff4da6, 0 0 20px #ff0066;
+    }
+    @keyframes tapParticleAnim {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+
+    /* Heart cursor trail */
+    .cursor-heart {
+      position: fixed;
+      font-size: 18px;
+      pointer-events: none;
+      animation: cursorFade 1s ease-out forwards;
+      filter: drop-shadow(0 0 6px #ff4da6);
+    }
+    @keyframes cursorFade {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(2); }
     }
   </style>
 </head>
@@ -50,50 +136,148 @@
   <div class="max-w-3xl mx-auto px-6 py-16">
 
     <!-- Header -->
-    <h1 class="text-5xl md:text-7xl font-bold mb-4" style="font-family: 'Playfair Display', serif;">
-      I Love You, Wifey ❤️
+    <h1 class="text-5xl md:text-7xl font-bold mb-4 fade-in neon" style="font-family: 'Playfair Display', serif;">
+      I Love You, Wifey <span class="heart-pulse">❤️</span>
     </h1>
 
-    <p class="text-xl italic text-[#d4a574] mb-10">
+    <p class="text-xl italic text-[#ffb3d9] mb-10 fade-in" style="animation-delay: .3s">
       You are my everything
     </p>
 
     <!-- Quotes -->
     <div class="space-y-8">
 
-      <div class="card p-8 rounded-xl bg-white/5 border border-white/10">
+      <div class="card p-8 rounded-xl fade-in" style="animation-delay: .5s">
         <p class="text-lg md:text-xl">
           “In all the world, there is no heart for me like yours.”
         </p>
-        <span class="text-sm italic text-[#d4a574]">— Maya Angelou</span>
+        <span class="text-sm italic text-[#ffb3d9]">— Maya Angelou</span>
       </div>
 
-      <div class="card p-8 rounded-xl bg-white/5 border border-white/10">
+      <div class="card p-8 rounded-xl fade-in" style="animation-delay: .7s">
         <p class="text-lg md:text-xl">
           “I saw that you were perfect, and so I loved you more.”
         </p>
-        <span class="text-sm italic text-[#d4a574]">— Angelita Lim</span>
+        <span class="text-sm italic text-[#ffb3d9]">— Angelita Lim</span>
       </div>
 
-      <div class="card p-8 rounded-xl bg-white/5 border border-white/10">
+      <div class="card p-8 rounded-xl fade-in" style="animation-delay: .9s">
         <p class="text-lg md:text-xl">
           “You are my mirror, my soulmate, my everything.”
         </p>
-        <span class="text-sm italic text-[#d4a574]">— Unknown</span>
+        <span class="text-sm italic text-[#ffb3d9]">— Unknown</span>
       </div>
 
     </div>
 
+    <!-- Random Love Message -->
+    <button id="loveBtn"
+      class="mt-10 px-6 py-3 bg-pink-600 hover:bg-pink-700 text-white rounded-xl transition fade-in neon"
+      style="animation-delay: 1.1s">
+      Tap for a Love Message 💖
+    </button>
+
+    <p id="loveMessage" class="mt-4 text-xl italic text-[#ffb3d9]"></p>
+
+    <!-- Love Letter Reveal -->
+    <div class="mt-16 fade-in" style="animation-delay: 1.3s">
+      <button id="revealBtn"
+        class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl transition neon">
+        Open Love Letter 💌
+      </button>
+
+      <div id="loveLetter"
+        class="mt-6 p-6 bg-white/10 border border-white/20 rounded-xl text-left opacity-0 max-h-0 overflow-hidden transition-all duration-700">
+        <p class="text-lg leading-relaxed">
+          My love,<br><br>
+          Every day with you feels like a blessing I never deserved.<br>
+          You are my peace, my joy, and my forever.<br>
+          I love you more than words can ever hold.
+        </p>
+      </div>
+    </div>
+
     <!-- Footer -->
-    <div class="mt-16">
-      <p class="text-2xl md:text-3xl font-bold italic mb-4" style="font-family: 'Playfair Display', serif;">
+    <div class="mt-16 fade-in" style="animation-delay: 1.5s">
+      <p class="text-2xl md:text-3xl font-bold italic mb-4 neon" style="font-family: 'Playfair Display', serif;">
         Forever & Always 💍
       </p>
-      
-      </a>
     </div>
 
   </div>
+
+  <!-- Scripts -->
+  <script>
+    /* Random love messages */
+    const messages = [
+      "Every moment with you feels like magic.",
+      "You are the reason my heart beats softer.",
+      "I fall for you more every single day.",
+      "Your smile is my favorite place to live.",
+      "Loving you is the best part of my life."
+    ];
+
+    document.getElementById("loveBtn").onclick = () => {
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      const el = document.getElementById("loveMessage");
+      el.textContent = msg;
+      el.classList.remove("fade-in");
+      void el.offsetWidth;
+      el.classList.add("fade-in");
+    };
+
+    /* Love letter reveal */
+    document.getElementById("revealBtn").onclick = () => {
+      const box = document.getElementById("loveLetter");
+      box.style.opacity = "1";
+      box.style.maxHeight = "500px";
+    };
+
+    /* Floating hearts */
+    function createFloatingHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+      heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+    setInterval(createFloatingHeart, 600);
+
+    /* Futuristic particles */
+    function createParticle() {
+      const p = document.createElement("div");
+      p.classList.add("particle");
+      p.style.left = Math.random() * 100 + "vw";
+      p.style.animationDuration = (Math.random() * 4 + 4) + "s";
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 9000);
+    }
+    setInterval(createParticle, 800);
+
+    /* Tap‑spawn glowing particles */
+    document.addEventListener("click", (e) => {
+      const particle = document.createElement("div");
+      particle.classList.add("tap-particle");
+      particle.style.left = e.clientX - 5 + "px";
+      particle.style.top = e.clientY - 5 + "px";
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 800);
+    });
+
+    /* Heart cursor trail */
+    document.addEventListener("mousemove", (e) => {
+      const heart = document.createElement("div");
+      heart.classList.add("cursor-heart");
+      heart.textContent = "💖";
+      heart.style.left = e.clientX + "px";
+      heart.style.top = e.clientY + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1000);
+    });
+  </script>
 
 </body>
 </html>
